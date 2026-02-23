@@ -1,0 +1,5 @@
+- type: is-json
+  value: file://../../working/is-valid-json-edge-cases.yaml
+- type: llm-rubric
+  provider: ollama:mistral:7b
+  value: file://../../working/llm-rubric-warm-greeting.txt

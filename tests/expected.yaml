@@ -1,0 +1,28 @@
+- vars: { name: "Alice", time_of_day: "morning" }
+  assert:
+    - value: file://assertions/not-working/expected/default.yaml
+- vars: { name: "Bob", time_of_day: "afternoon" }
+  assert: 
+    - value: file://assertions/not-working/expected/default.yaml
+
+- vars: { name: "Charlie", time_of_day: "evening" }
+  assert:
+    - value: file://assertions/not-working/expected/default.yaml
+
+# Edge cases - should return error (and test should PASS when error is returned)
+- vars: { name: "Arthur", time_of_day: "whatever" }
+  assert:
+    - value: file://assertions/not-working/expected/edge-cases.yaml
+
+- vars: { name: "Dave", time_of_day: "" }
+  assert:
+    - value: file://assertions/not-working/expected/edge-cases.yaml
+
+- vars: { name: "", time_of_day: "night" }
+  assert:
+    - value: file://assertions/not-working/expected/edge-cases.yaml
+
+- vars: { name: "", time_of_day: "" }
+  assert:
+    - value: file://assertions/not-working/expected/edge-cases.yaml
+

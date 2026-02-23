@@ -1,0 +1,5 @@
+required: ["error"]
+type: object
+properties:
+  error:
+    type: string

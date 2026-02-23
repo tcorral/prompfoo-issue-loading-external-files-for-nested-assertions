@@ -1,0 +1,30 @@
+- vars: { name: "Alice", time_of_day: "morning" }
+  assert: &common_assertions
+    - type: is-json
+      value: file://assertions/working/is-valid-json-default.yaml
+    - type: llm-rubric
+      provider: ollama:mistral:7b
+      value: file://assertions/working/llm-rubric-warm-greeting.txt
+
+- vars: { name: "Bob", time_of_day: "afternoon" }
+  assert: *common_assertions
+
+- vars: { name: "Charlie", time_of_day: "evening" }
+  assert: *common_assertions
+
+# Edge cases - should return error (and test should PASS when error is returned)
+- vars: { name: "Arthur", time_of_day: "whatever", error_context: "wrong time_of_day" }
+  assert: &edge_case_assertion
+    - type: is-json
+      value: file://assertions/working/is-valid-json-edge-cases.yaml
+    - type: javascript
+      value: file://assertions/working/edge-cases.js
+
+- vars: { name: "Dave", time_of_day: "", error_context: "missing time_of_day" }
+  assert: *edge_case_assertion
+
+- vars: { name: "", time_of_day: "night", error_context: "missing name" }
+  assert: *edge_case_assertion
+
+- vars: { name: "", time_of_day: "", error_context: "missing data" }
+  assert: *edge_case_assertion

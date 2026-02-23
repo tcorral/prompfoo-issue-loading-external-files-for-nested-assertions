@@ -1,0 +1,7 @@
+description: Demo of nested assertions issue
+prompts:
+  - file://prompts/prompt.txt
+providers:
+  - ollama:qwen2.5 # Change to any other provider if you want to test with a different model
+tests:
+  - file://tests/original.yaml

@@ -1,0 +1,4 @@
+- type: is-json
+  value: file://../../working/is-valid-json-edge-cases.yaml
+- type: javascript
+  value: file://../../working/edge-cases.js

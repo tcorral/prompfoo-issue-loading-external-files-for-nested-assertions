@@ -1,0 +1,5 @@
+The greeting should be:
+1. Warm and personalized - addressing the person by name
+2. Contextually appropriate to the time of day (morning, afternoon, evening, night)
+3. Professional and helpful
+Grade as PASS if it meets all three criteria, FAIL otherwise.

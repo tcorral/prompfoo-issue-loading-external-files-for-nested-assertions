@@ -1,0 +1,17 @@
+{
+  "name": "nested-assertions-issue-demo",
+  "version": "1.0.0",
+  "description": "Demo of nested assertions issue",
+  "scripts": {
+    "eval:original": "promptfoo eval -c promptfooconfig.yaml -t tests/original.yaml",
+    "eval:workaround": "promptfoo eval -c promptfooconfig.yaml -t tests/workaround.yaml",
+    "eval:expected": "promptfoo eval -c promptfooconfig.yaml -t tests/expected.yaml",
+    "eval:ideal": "promptfoo eval -c promptfooconfig.yaml -t tests/ideal.yaml",
+    "view": "promptfoo view"
+  },
+  "author": "Tomas Corral Casas",
+  "license": "MIT",
+  "devDependencies": {
+    "promptfoo": "^0.120.25"
+  }
+}

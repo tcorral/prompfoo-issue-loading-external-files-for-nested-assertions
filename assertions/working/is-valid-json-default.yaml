@@ -1,0 +1,5 @@
+required: ["greeting"]
+type: object
+properties:
+  greeting:
+    type: string

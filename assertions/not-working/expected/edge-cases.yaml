@@ -1,0 +1,14 @@
+- type: is-json
+  value:
+    required: ["error"]
+    type: object
+    properties:
+      error:
+        type: string
+- type: javascript
+  value: |
+    const parsed = JSON.parse(output);
+    if (parsed.error) {
+      return { pass: true, score: 1, reason: "Correctly returned error: " + parsed.error };
+    }
+    return { pass: false, score: 0, reason: "Should return error for missing time_of_day" };

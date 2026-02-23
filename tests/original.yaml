@@ -1,0 +1,73 @@
+- vars: { name: "Alice", time_of_day: "morning" }
+  assert:
+    - type: is-json
+      value: file://assertions/working/is-valid-json-default.yaml
+    - type: llm-rubric
+      provider: ollama:mistral:7b
+      value: file://assertions/working/llm-rubric-warm-greeting.txt
+
+- vars: { name: "Bob", time_of_day: "afternoon" }
+  assert: 
+    - type: is-json
+      value: file://assertions/working/is-valid-json-default.yaml
+    - type: llm-rubric
+      provider: ollama:mistral:7b
+      value: file://assertions/working/llm-rubric-warm-greeting.txt
+
+- vars: { name: "Charlie", time_of_day: "evening" }
+  assert:
+    - type: is-json
+      value: file://assertions/working/is-valid-json-default.yaml
+    - type: llm-rubric
+      provider: ollama:mistral:7b
+      value: file://assertions/working/llm-rubric-warm-greeting.txt
+
+# Edge cases - should return error (and test should PASS when error is returned)
+- vars: { name: "Arthur", time_of_day: "whatever" }
+  assert:
+    - type: is-json
+      value: file://assertions/working/is-valid-json-edge-cases.yaml
+    - type: javascript
+      value: |
+        const parsed = JSON.parse(output);
+        if (parsed.error) {
+          return { pass: true, score: 1, reason: "Correctly returned error: " + parsed.error };
+        }
+        return { pass: false, score: 0, reason: "Should return error for wrong time_of_day" };
+
+- vars: { name: "Dave", time_of_day: "" }
+  assert:
+    - type: is-json
+      value: file://assertions/working/is-valid-json-edge-cases.yaml
+    - type: javascript
+      value: |
+        const parsed = JSON.parse(output);
+        if (parsed.error) {
+          return { pass: true, score: 1, reason: "Correctly returned error: " + parsed.error };
+        }
+        return { pass: false, score: 0, reason: "Should return error for missing time_of_day" };
+
+- vars: { name: "", time_of_day: "night" }
+  assert:
+    - type: is-json
+      value: file://assertions/working/is-valid-json-edge-cases.yaml
+    - type: javascript
+      value: |
+        const parsed = JSON.parse(output);
+        if (parsed.error) {
+          return { pass: true, score: 1, reason: "Correctly returned error: " + parsed.error };
+        }
+        return { pass: false, score: 0, reason: "Should return error for missing name" };
+
+- vars: { name: "", time_of_day: "" }
+  assert:
+    - type: is-json
+      value: file://assertions/working/is-valid-json-edge-cases.yaml
+    - type: javascript
+      value: |
+        const parsed = JSON.parse(output);
+        if (parsed.error) {
+          return { pass: true, score: 1, reason: "Correctly returned error: " + parsed.error };
+        }
+        return { pass: false, score: 0, reason: "Should return error for missing data" };
+
