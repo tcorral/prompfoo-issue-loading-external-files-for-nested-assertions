@@ -237,43 +237,7 @@ This repository is a demonstration for a Promptfoo feature request:
 
 **Title:** Support external file references for nested assertion properties (e.g., `type`, `provider`, `value`)
 
-**GitHub Issue Link:** [Feature request link - to be added]
-
-### What's Needed
-
-Modify Promptfoo's assertion loading mechanism to:
-1. Recursively process `file://` references throughout the entire assertion structure
-2. Support file references not just in `value`, but in `type`, `provider`, and any other nested property
-3. Allow assertion files to reference other assertion files
-4. Maintain backward compatibility with existing configurations
-
----
-
-## Example Output
-
-### Working (Original)
-```
-✓ Test 1: Alice - morning greeting
-  ✓ Assertion 1: Valid JSON structure
-  ✓ Assertion 2: LLM Rubric passed
-
-✓ Test 2: Bob - afternoon greeting
-  ✓ Assertion 1: Valid JSON structure
-  ✓ Assertion 2: LLM Rubric passed
-
-✓ Test 5: Arthur - invalid time_of_day (edge case)
-  ✓ Assertion 1: Valid error JSON structure
-  ✓ Assertion 2: Correctly returned error
-```
-
-### Not Working (Ideal)
-```
-✗ Test 1: Alice - morning greeting
-  Error: Could not evaluate assertions from file
-  
-Reason: External file references for assertion properties other than 'value' 
-are not currently supported.
-```
+**GitHub Issue Link:** https://github.com/promptfoo/promptfoo/issues/7823
 
 ---
 
