@@ -253,7 +253,7 @@ Until this feature is implemented, you can:
 3. **Create wrapper scripts** that generate test files dynamically
 4. **Maintain separate test configurations** for different scenarios
 
-See [workaround](https://github.com/tcorral/prompfoo-issue-loading-external-files-for-nested-assertions/tree/main/tests)
+See [workaround](https://github.com/tcorral/prompfoo-issue-loading-external-files-for-nested-assertions/blob/main/tests/workaround.yaml)
 
 ---
 
