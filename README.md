@@ -271,7 +271,6 @@ This repository demonstrates the feature request. If you're interested in:
 
 - [Promptfoo Documentation](https://www.promptfoo.dev/)
 - [Promptfoo GitHub Repository](https://github.com/promptfoo/promptfoo)
-- [GitHub Issue Template](./ISSUE_TEMPLATE.md)
 
 ---
 
