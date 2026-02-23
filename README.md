@@ -1,26 +1,26 @@
-# Promptfoo: External File References for Nested Assertions
+# Promptfoo: External file references for nested assertions
 
 This repository demonstrates a feature request for [Promptfoo](https://www.promptfoo.dev/) to support external file references for nested assertion properties.
 
-## The Problem
+## The problem
 
 Currently, Promptfoo only allows external file references (`file://`) for the top-level `value` property in assertions. This means:
 
-- ❌ You **cannot** reference external files for assertion `type`, `provider`, or other nested properties
-- 📋 You must either inline all assertion configurations or duplicate them across test cases
-- 🔄 Reusing assertions across multiple tests violates the DRY principle
-- 🏗️ Building modular assertion libraries is not possible
+- You **cannot** reference external files for assertion `type`, `provider`, or other nested properties
+- You must either inline all assertion configurations or duplicate them across test cases
+- RReusing assertions across multiple tests violates the DRY principle
+- Building modular assertion libraries is not possible
 
-## The Solution
+## The solution
 
 This feature request proposes supporting external file references throughout the entire assertion structure, enabling:
 
-- ✅ Defining assertions once and reusing them across multiple test cases
-- ✅ Multi-level file organization with nested references
-- ✅ True modularity and reusability of assertion configurations
-- ✅ Better maintainability of large test suites
+- Defining assertions once and reusing them across multiple test cases
+- Multi-level file organization with nested references
+- True modularity and reusability of assertion configurations
+- Better maintainability of large test suites
 
-## Repository Structure
+## Repository structure
 
 ```
 ├── assertions/
@@ -36,19 +36,19 @@ This feature request proposes supporting external file references throughout the
 │           ├── default.yaml
 │           └── edge-cases.yaml
 ├── tests/
-│   ├── original.yaml         # ✅ Working: inline assertions
-│   ├── expected.yaml         # ❌ Not working: nested file refs in test
-│   ├── ideal.yaml            # ✨ Ideal: cleaner nested file refs
-│   └── workaround.yaml       # 🛠️ Workaround: use javascript inline
+│   ├── original.yaml         # Working: inline assertions
+│   ├── expected.yaml         # Not working: nested file refs in test
+│   ├── ideal.yaml            # Ideal: cleaner nested file refs
+│   └── workaround.yaml       # Workaround: use labels
 ├── prompts/
 │   └── prompt.txt            # Sample prompt
 ├── promptfooconfig.yaml      # Promptfoo configuration
 └── package.json              # Project dependencies
 ```
 
-## Test Scenarios
+## Test scenarios
 
-### 1. ✅ Original Working Approach (`tests/original.yaml`)
+### 1. Original working approach (`tests/original.yaml`)
 
 **What works:** Inlining all assertion properties with file references only in `value`
 
@@ -68,17 +68,17 @@ npm run eval:original
 ```
 
 **Pros:**
-- ✅ Works out of the box
-- ✅ File references work for assertion validation details
+- Works out of the box
+- File references work for assertion validation details
 
 **Cons:**
-- ❌ Must inline `type` and `provider` in each test case
-- ❌ Assertion configurations are duplicated
-- ❌ Not truly modular
+- Must inline `type` and `provider` in each test case
+- Assertion configurations are duplicated
+- Not truly modular
 
 ---
 
-### 2. ❌ Expected Approach (`tests/expected.yaml`)
+### 2. Expected approach (`tests/expected.yaml`)
 
 **What doesn't work:** Referencing a file that contains multiple assertions
 
@@ -115,7 +115,7 @@ npm run eval:expected
 
 ---
 
-### 3. ✨ Ideal Approach (`tests/ideal.yaml`)
+### 3. Ideal approach (`tests/ideal.yaml`)
 
 **What we want:** Full support for nested file references
 
@@ -139,17 +139,17 @@ npm run eval:ideal
 ```
 
 **Benefits:**
-- ✅ Fully modular assertion definitions
-- ✅ Assertions are defined once, reused everywhere
-- ✅ Multi-level file organization
-- ✅ Easy to maintain and update
-- ✅ Scalable for large test suites
+- Fully modular assertion definitions
+- Assertions are defined once, reused everywhere
+- Multi-level file organization
+- Easy to maintain and update
+- Scalable for large test suites
 
 ---
 
-## Use Cases
+## Use cases
 
-### 1. Shared Assertion Libraries
+### 1. Shared assertion libraries
 
 Create a centralized library of reusable assertions:
 
@@ -169,7 +169,7 @@ assertions/
 
 Then reference them in test files without duplication.
 
-### 2. Test Organization by Feature
+### 2. Test organization by feature
 
 ```
 tests/
@@ -185,7 +185,7 @@ tests/
 
 All tests in a feature can reference the same assertions from `assertions/` directory.
 
-### 3. Assertion Versioning
+### 3. Assertion versioning
 
 Maintain multiple versions of assertions and reference different ones:
 
@@ -199,11 +199,11 @@ assertions/
 
 ---
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
-- Node.js 16+
+- Node.js 18+
 - Promptfoo CLI installed (or use `npm install`)
 - Ollama running with `qwen2.5` model (or change provider in `promptfooconfig.yaml`)
 
@@ -213,7 +213,7 @@ assertions/
 npm install
 ```
 
-### Run Tests
+### Run tests
 
 ```bash
 # Original working approach
@@ -225,13 +225,16 @@ npm run eval:expected
 # Ideal approach (currently doesn't work)
 npm run eval:ideal
 
+# Workardound approach
+npm run eval:workaround
+
 # View results
 npm run view
 ```
 
 ---
 
-## Feature Request Details
+## Feature request details
 
 This repository is a demonstration for a Promptfoo feature request:
 
@@ -249,6 +252,8 @@ Until this feature is implemented, you can:
 2. **Use JavaScript assertions** with inline logic
 3. **Create wrapper scripts** that generate test files dynamically
 4. **Maintain separate test configurations** for different scenarios
+
+See [workaround](https://github.com/tcorral/prompfoo-issue-loading-external-files-for-nested-assertions/tree/main/tests)
 
 ---
 
