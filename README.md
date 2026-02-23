@@ -6,7 +6,7 @@ This repository demonstrates a feature request for [Promptfoo](https://www.promp
 
 Currently, Promptfoo only allows external file references (`file://`) for the top-level `value` property in assertions. This means:
 
-- You **cannot** reference external files for assertion `type`, `provider`, or other nested properties
+- You cannot reference external files for assertion `type`, `provider`, or other nested properties
 - You must either inline all assertion configurations or duplicate them across test cases
 - RReusing assertions across multiple tests violates the DRY principle
 - Building modular assertion libraries is not possible
@@ -50,7 +50,7 @@ This feature request proposes supporting external file references throughout the
 
 ### 1. Original working approach (`tests/original.yaml`)
 
-**What works:** Inlining all assertion properties with file references only in `value`
+What works: Inlining all assertion properties with file references only in `value`
 
 ```yaml
 - vars: { name: "Alice", time_of_day: "morning" }
@@ -62,16 +62,16 @@ This feature request proposes supporting external file references throughout the
       value: file://assertions/working/llm-rubric-warm-greeting.txt
 ```
 
-**Run it:**
+Run it:
 ```bash
 npm run eval:original
 ```
 
-**Pros:**
+Pros:
 - Works out of the box
 - File references work for assertion validation details
 
-**Cons:**
+Cons:
 - Must inline `type` and `provider` in each test case
 - Assertion configurations are duplicated
 - Not truly modular
@@ -80,7 +80,7 @@ npm run eval:original
 
 ### 2. Expected approach (`tests/expected.yaml`)
 
-**What doesn't work:** Referencing a file that contains multiple assertions
+What doesn't work: Referencing a file that contains multiple assertions
 
 ```yaml
 # tests/expected.yaml
@@ -106,18 +106,18 @@ npm run eval:original
     Grade as PASS if it meets all three criteria, FAIL otherwise.
 ```
 
-**Run it:**
+Run it:
 ```bash
 npm run eval:expected
 ```
 
-**Status:** This currently doesn't work properly because file references are only supported for the `value` property.
+Status: This currently doesn't work properly because file references are only supported for the `value` property.
 
 ---
 
 ### 3. Ideal approach (`tests/ideal.yaml`)
 
-**What we want:** Full support for nested file references
+What we want: Full support for nested file references
 
 ```yaml
 # tests/ideal.yaml
@@ -133,12 +133,12 @@ npm run eval:expected
   value: file://assertions/working/llm-rubric-warm-greeting.txt
 ```
 
-**Run it (currently doesn't work):**
+Run it (currently doesn't work):
 ```bash
 npm run eval:ideal
 ```
 
-**Benefits:**
+Benefits:
 - Fully modular assertion definitions
 - Assertions are defined once, reused everywhere
 - Multi-level file organization
@@ -238,9 +238,9 @@ npm run view
 
 This repository is a demonstration for a Promptfoo feature request:
 
-**Title:** Support external file references for nested assertion properties (e.g., `type`, `provider`, `value`)
+Title: Support external file references for nested assertion properties (e.g., `type`, `provider`, `value`)
 
-**GitHub Issue Link:** https://github.com/promptfoo/promptfoo/issues/7823
+GitHub Issue Link: https://github.com/promptfoo/promptfoo/issues/7823
 
 ---
 
@@ -248,10 +248,10 @@ This repository is a demonstration for a Promptfoo feature request:
 
 Until this feature is implemented, you can:
 
-1. **Inline all assertions** (not modular but works)
-2. **Use JavaScript assertions** with inline logic
-3. **Create wrapper scripts** that generate test files dynamically
-4. **Maintain separate test configurations** for different scenarios
+1. Inline all assertions (not modular but works)
+2. Use JavaScript assertions with inline logic
+3. Create wrapper scripts that generate test files dynamically
+4. Maintain separate test configurations for different scenarios
 
 See [workaround](https://github.com/tcorral/prompfoo-issue-loading-external-files-for-nested-assertions/blob/main/tests/workaround.yaml)
 
@@ -261,9 +261,9 @@ See [workaround](https://github.com/tcorral/prompfoo-issue-loading-external-file
 
 This repository demonstrates the feature request. If you're interested in:
 
-- **Using this feature**: Comment on the GitHub issue or 👍 react to show interest
-- **Implementing this feature**: Check the Promptfoo repository for contribution guidelines
-- **Improving this demo**: Feel free to fork and enhance the examples
+- Using this feature: Comment on the GitHub issue or 👍 react to show interest
+- Implementing this feature: Check the Promptfoo repository for contribution guidelines
+- Improving this demo: Feel free to fork and enhance the examples
 
 ---
 
