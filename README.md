@@ -276,7 +276,7 @@ This repository demonstrates the feature request. If you're interested in:
 
 ## Author
 
-Created by [Tomas Corral Casas](https://github.com/tomascorralcasas)
+Created by [Tomas Corral Casas](https://github.com/tcorral)
 
 ## License
 
